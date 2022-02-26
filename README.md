@@ -39,31 +39,31 @@ The VGG16-based model used in Task 1 achieved an accuracy of 95-100%. As seen in
 
 As is shown in the graph of loss values over 40 epochs, our VGG16 model achieved a training loss of 0.151 and a validation loss of 0.0319 as recorded on the last epoch. At the 18<sup>th</sup> epoch of the graphed accuracy, we see a spike in the loss graph with a validation loss value of 0.2011.
 
-![Task1_Graphs](https://user-images.githubusercontent.com/32208581/155856871-d8748d4c-afb5-47f5-9b57-b1dd7f828180.png)
+![Task1_Graphs](https://user-images.githubusercontent.com/32208581/155857455-ded7bdf5-cb96-42f6-86f6-747d65bbc138.png)
 
 #### Task 2
 As to be expected, the plots seen below for VGG16 and VGG19 look very similar since they are based off of near-identical models. ResNet50V2, however, is much more sporadic in both its test accuracy and test values. Perhaps this is to do with resNet5V0V2's 'skip connections'; later layers are getting more varied inputs (a sequential input and an untouched input from the bargaining layers of the model) thus the accuracy and loss varies greatly. Even with drastic peaks and valleys in resNet50V2, the test accuracy matched that of VGG16: 72%. VGG19 approached a 70% test accuracy on its hundredth epoch, but varied greatly both in the beginning of training and throughout the bulk of future epochs. VGG16 achieved a loss of 0.6988, resNet50V2 achieved a loss of 0.9349, VGG19 achieved a loss of 0.9466. For a simple classification task like that of Task 2, I would most likely choose the model based on VGG16. Its end performance was comparable to resNet50V2, and its pattern of accuracy and loss values stayed semi-consistent - all while requiring less parameters and less time to train (using an Intel i7-6700HQ CPU @ 2.60GHz).
 
-![Task2_Graphs](https://user-images.githubusercontent.com/32208581/155856919-baf34a67-580c-4216-8b70-5316ea6f8834.png)
+![Task2_Graphs](https://user-images.githubusercontent.com/32208581/155857458-7db9f68f-1d63-4d53-a090-9df31689df94.png)
 
 ## 5 &nbsp; &nbsp; t-SNE Visualizations
 #### Task 1
 The first dense layer of the model, 128-neuron large, was used as an intermediate model to test acceptable feature extraction. As seen in the plot below, the clusters of features can be easily separated into two segments (with the exception of a single normal case among the COVID-19 cases). Based on this visualization our model seems to be working properly, finding and grouping similarities between the two classes.
 
-![Task1_TSNE](https://user-images.githubusercontent.com/32208581/155857066-1863574c-53f8-4086-8e7f-2163ad3fc93b.png)
+![Task1_TSNE](https://user-images.githubusercontent.com/32208581/155857462-84226183-c922-4e05-8d22-4659a1508ea5.png)
 
 #### Task 2
 For all models used, the respective 128-neuron large dense layer was used as the intermediate model during feature extraction. Below is the graphed result of t-distributed stochastic neighbor embedding on our model using VGG16 as the base sub-model. Most features are well-defined and well-clustered with the exception of the two classes of pneumonia. This is to be expected since viral and bacterial pneumonia look very similar to one another in an X-ray. This is most probably the reason our best model couldn't surpass a test accuracy of 80%; although it can differentiate between pneumonia, COVID-19, and a normal patient, it has trouble differentiating between the *nature* of the pneumonia that it has succesfully classified.
 
-![Task2_TSNE1](https://user-images.githubusercontent.com/32208581/155857140-f3e2c800-73e7-49b6-80cb-2ddf89dd371c.png)
+![Task2_TSNE1](https://user-images.githubusercontent.com/32208581/155857468-8e50e089-670f-4f96-8082-a6513a1bf534.png)
 
 Below is the plotted t-SNE for the model using resNet50V2 as its base submodel. Once again, the features are well-defined and well-clustered with the exception of bacterial and viral pneumonia. It seems as though changing only the submodel does not result in an extreme change of feature extraction: the same errors are present in both models.
 
-![Task2_TSNE2](https://user-images.githubusercontent.com/32208581/155857169-d3162713-2e21-47fe-be05-37b499a9adea.png)
+![Task2_TSNE2](https://user-images.githubusercontent.com/32208581/155857470-72d9ced2-71c9-44cc-bfdb-f16f1f75acc4.png)
 
 Below is the plotted t-SNE for the model using VGG19 as its base submodel. Unlike the other two models, the distinction between bacterial pneumonia and Covid-19 becomes muddled in some cases. It can now be seen that every model implemented had trouble determining a distinction between viral pneumonia and bacterial pneumonia. However, every model tested successfully differentiates between normal x-rays, ones of a Covid-19 patient, and ones of pneumonia patients as a whole.
 
-![Task2_TSNE3](https://user-images.githubusercontent.com/32208581/155857200-403d7817-3c28-4fde-839b-2a40d72c72c8.png)
+![Task2_TSNE3](https://user-images.githubusercontent.com/32208581/155857472-ead9a337-f1f6-488c-9e3c-6760a3ae062c.png)
 
 ## 6 &nbsp; &nbsp; References
 [1] He, K., Zhang, X., Ren, S., Sun, J. Deep Residual Learning for Image Recognition. https://arxiv.org/pdf/1512.03385.pdf, 2-3, 2015.
